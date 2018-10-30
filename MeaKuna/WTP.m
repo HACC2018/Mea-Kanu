@@ -1,4 +1,4 @@
-%%%%%%% WTPlant %%%%%%
+%%%%%%% MeaKuna %%%%%%
 % Jonas Krause       %
 % krausej@hawaii.edu %
 %%%%%%%%%%%%%%%%%%%%%%
