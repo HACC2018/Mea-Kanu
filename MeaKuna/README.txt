@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%
 
 Pre-install:
-0) Python3 and dependencies (numpy and keras)
+0) Matlab, Python3 and dependencies (numpy and keras)
 1) Tensorflow ==> pip install --upgrade tensorflow
 2) OpenCV ==> python install opencv-python
 
