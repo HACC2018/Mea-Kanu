@@ -1,16 +1,13 @@
-%%%%%%% WTPlant %%%%%%
-% Jonas Krause       %
-% krausej@hawaii.edu %
-%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% MeaKuna %%%%%%
 
 Pre-install:
-0) Matlab, Python3 and dependencies (numpy and keras)
-1) Tensorflow ==> pip install --upgrade tensorflow
-2) OpenCV ==> python install opencv-python
+1) Matlab, Python3 and dependencies (numpy and keras)
+2) Tensorflow ==> pip install --upgrade tensorflow
+3) OpenCV ==> python install opencv-python
 
 Necessary Paths (change accordingly):
 
-WTP files ==> GitHub files into folder D:\MeaKuna\
+All files ==> GitHub files into folder D:\MeaKuna\
 Python3.exe ==> For Python 2, change line "GCCommand = ['python3"
 
 Execute:
