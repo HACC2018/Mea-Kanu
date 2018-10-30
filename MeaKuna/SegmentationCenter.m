@@ -1,6 +1,6 @@
 function SegmentationCenter(foldername,filename)
 
-%%%% WTPlant - Segmentation %%%%
+%%%% MeaKuna - Segmentation %%%%
 % Jonas Krause
 % krausej@hawaii.edu
 
