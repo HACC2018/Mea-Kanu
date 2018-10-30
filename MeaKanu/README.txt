@@ -3,7 +3,7 @@
 PLANT IDENTIFICATION
 This is the back-end system of the app MeaKuna
 A Deep Learning approach to identify plants in natural images
-This updated version includes Hawaiian Endangered Species
+This version includes Hawaiian Endangered Species
 
 Pre-install:
 1) Matlab, Python3 and dependencies (numpy, OpenCV, pip)
