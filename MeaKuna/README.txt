@@ -1,4 +1,4 @@
-%%%%%%% MeaKuna %%%%%%
+%%%%%%% MeaKanu %%%%%%
 
 PLANT IDENTIFICATION
 This is the back-end system of the app MeaKuna
