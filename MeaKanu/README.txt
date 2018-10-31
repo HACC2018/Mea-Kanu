@@ -1,7 +1,7 @@
 %%%%%%% MeaKanu %%%%%%
 
 PLANT IDENTIFICATION
-This is the back-end system of the app MeaKuna
+This is the back-end system of the app MeaKanu
 A Deep Learning approach to identify plants in natural images
 This version includes Hawaiian Endangered Species
 
@@ -11,7 +11,7 @@ Pre-install:
 3) Keras ==> pip install keras
 
 Necessary Paths (change accordingly):
-All files ==> GitHub files into folder D:\MeaKuna\
+All files ==> GitHub files into folder D:\MeaKanu\
 Python3.exe ==> For Python 2, change line "GCCommand = ['python3"
 
 Execute:
