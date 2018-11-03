@@ -12,6 +12,8 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
+    "axios": "^0.18.0",
+    "nativescript-camera": "^4.0.3",
     "nativescript-imagepicker": "~6.0.0",
     "nativescript-plugin-firebase": "~7.3.0",
     "nativescript-theme-core": "~1.0.4",

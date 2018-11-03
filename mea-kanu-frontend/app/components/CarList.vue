@@ -1,7 +1,9 @@
 <template>
     <Page class="page">
         <ActionBar class="action-bar">
-            <Label class="action-bar-title" text="Car List" horizontalAlignment="center" />
+            <Label class="action-bar-title" text="Mea Kanu" horizontalAlignment="center" />
+            <ActionItem @tap="openCam" android.systemIcon="ic_menu_search" android.position="actionBar"/>
+            <NavigationButton text="Go Back" android.systemIcon="ic_menu_camera" @tap="openCam"/>
         </ActionBar>
 
         <RadListView v-if="!isLoading" for="item in carList" @itemTap="onItemTap" class="list-group">
