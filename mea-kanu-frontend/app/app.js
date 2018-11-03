@@ -11,7 +11,7 @@ Vue.config.silent = (TNS_ENV === 'production');
 
 import cars from "./shared/cars/car-service";
 
-import CarList from "./components/CarList";
+import PlantList from "./components/PlantList";
 import CarDetails from "./components/CarDetails";
 import CarDetailsEdit from "./components/CarDetailsEdit";
 
@@ -19,11 +19,11 @@ new Vue({
 
     template: `
         <Frame>
-            <CarList :cars="cars" />
+            <PlantList :cars="cars" />
         </Frame>`,
 
     components: {
-        CarList,
+        PlantList,
         CarDetails,
         CarDetailsEdit
     },

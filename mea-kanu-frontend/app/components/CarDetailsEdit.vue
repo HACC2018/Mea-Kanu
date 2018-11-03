@@ -63,7 +63,7 @@
 <script>
     import { alert } from "ui/dialogs";
     import carService from "~/shared/cars/car-service";
-    import CarList from "./CarList";
+    import CarList from "./PlantList";
     import Selector from "./Selector";
     import AddRemoveImage from "./AddRemoveImage";
 

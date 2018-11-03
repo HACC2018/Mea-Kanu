@@ -2,29 +2,30 @@
     <Page class="page">
         <ActionBar class="action-bar">
             <Label class="action-bar-title" text="Mea Kanu" horizontalAlignment="center" />
-            <ActionItem @tap="openCam" android.systemIcon="ic_menu_search" android.position="actionBar"/>
+            <ActionItem @tap="openCam" android.systemIcon="picture_frame" android.position="actionBar"/>
             <NavigationButton text="Go Back" android.systemIcon="ic_menu_camera" @tap="openCam"/>
         </ActionBar>
         <RadListView ref="listView" for="plant in plantList" @itemTap="onItemTap" class="list-group">
             <ListViewLinearLayout v-tkListViewLayout scrollDirection="vertical"/>
             <v-template>
+
                 <GridLayout rows="*, *, *" columns="*, *" class="list-group-item-content">
                     <Label :text="plant.name" class="text-primary list-group-item-text font-weight-bold"/>
                     <Label col="1" horizontalAlignment="right" class="list-group-item-text m-r-5"/>
 
                     <Label row="1" class="hr-dark m-t-5 m-b-5" colSpan="2"/>
 
-                    <Image row="2" :src="plant.picture" stretchj="aspectFill" height="120" class="m-r-20" loadMode="async"/>
+                    <Image row="2" :src="plant.picture" stretch="aspectFill" height="120" class="m-r-20" loadMode="async"/>
                     <StackLayout row="2" col="1" verticalAlignment="center" class="list-group-item-text">
                         <Label class="p-b-10">
                             <FormattedString>
-                                <Span text.decode="&#xf085;   " class="fa text-primary"/>
+                                <Span text.decode="&#xf0c3;   " class="fa text-primary"/>
                                 <Span :text="plant.label"/>
                             </FormattedString>
                         </Label>
 
                         <Label class="p-b-10">
-                            <Span text.decode="&#xf085;   " class="fa text-primary"/>
+                            <Span text.decode="&#xf12a;   " class="fa text-primary"/>
                             <Span :text="plant.scientificName"/>
                         </Label>
 
@@ -34,6 +35,7 @@
                         </Label>
                     </StackLayout>
                 </GridLayout>
+
                 <!--<StackLayout orientation="vertical">-->
                 <!--<Label :text="plant.name"></Label>-->
                 <!--<Image :src="plant.picture" class="list-picture"/>--
@@ -88,6 +90,9 @@
                     console.log("Error -> " + err.message);
                 });
             },
+            uploadPic() {
+
+            },
             goBack() {
                 console.log('testing goBack function is this getting updated');
             },
@@ -137,6 +142,9 @@
         .fa {
             color: $accent-dark;
         }
+    }
+    .back{
+        background-color: gray;
     }
 </style>
 
