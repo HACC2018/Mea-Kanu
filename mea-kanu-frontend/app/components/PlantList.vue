@@ -72,23 +72,24 @@
         methods: {
             openCam() {
                 let imageModule = require('ui/image');
-                camera.requestPermissions();
-                camera.takePicture({width:300, height:300, keepAspectRatio: true, saveToGallery: true})
-                    .then(function (imageAsset){
-                        console.log("Result is an image asset instance");
-                        let image = new imageModule.Image();
-                        image.src = imageAsset;
-                        axios.post('https://mea-kanu.firebaseio.com/data.json', image.src)
-                            .then(response => {
-                                console.log(response);
-                            }, error => {
-                                console.log(error);
-                            })
-                        // this.picture = imageAsset;
-                        //console.log(this.img);
-                    }).catch(function (err) {
-                    console.log("Error -> " + err.message);
-                });
+                camera.requestPermissions()
+                    .then(
+                        camera.takePicture({width:300, height:300, keepAspectRatio: true, saveToGallery: true})
+                            .then(function (imageAsset){
+                                console.log("Result is an image asset instance");
+                                let image = new imageModule.Image();
+                                image.src = imageAsset;
+                                axios.post('https://mea-kanu.firebaseio.com/data.json', image.src)
+                                    .then(response => {
+                                        console.log(response);
+                                    }, error => {
+                                        console.log(error);
+                                    })
+                            }).catch(function (err) {
+                            console.log("Error -> " + err.message);
+                        })
+                    );
+
             },
             uploadPic() {
 
