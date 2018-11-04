@@ -1,11 +1,11 @@
 {
   "nativescript": {
     "id": "org.nativescript.meakanufrontend",
-    "tns-android": {
-      "version": "5.0.0"
-    },
     "tns-ios": {
       "version": "5.0.0"
+    },
+    "tns-android": {
+      "version": "4.2.0"
     }
   },
   "description": "NativeScript Application",

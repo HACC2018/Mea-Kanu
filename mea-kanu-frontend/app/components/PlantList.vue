@@ -72,8 +72,8 @@
         methods: {
             openCam() {
                 let imageModule = require('ui/image');
-                camera.requestPermissions()
-                    .then(
+                camera.requestPermissions();
+
                         camera.takePicture({width:300, height:300, keepAspectRatio: true, saveToGallery: true})
                             .then(function (imageAsset){
                                 console.log("Result is an image asset instance");
@@ -87,8 +87,7 @@
                                     })
                             }).catch(function (err) {
                             console.log("Error -> " + err.message);
-                        })
-                    );
+                        });
 
             },
             uploadPic() {
