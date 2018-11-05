@@ -1,11 +1,11 @@
 {
   "nativescript": {
     "id": "org.nativescript.meakanufrontend",
-    "tns-ios": {
-      "version": "5.0.0"
-    },
     "tns-android": {
-      "version": "4.2.0"
+      "version": "5.0.0-2018-10-26-154209-01"
+    },
+    "tns-ios": {
+      "version": "5.0.0-2018-10-24-125735-01"
     }
   },
   "description": "NativeScript Application",
@@ -15,11 +15,12 @@
     "axios": "^0.18.0",
     "nativescript-camera": "^4.0.3",
     "nativescript-imagepicker": "~6.0.0",
+    "nativescript-permissions": "^1.2.3",
     "nativescript-plugin-firebase": "~7.3.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-listview": "~3.7.0",
     "nativescript-vue": "~2.0.0",
-    "tns-core-modules": "~5.0.0"
+    "tns-core-modules": "^5.2.0-2018-11-02-173205-05"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",

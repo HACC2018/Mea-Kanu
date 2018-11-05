@@ -2,7 +2,7 @@
     <Page class="page">
         <ActionBar class="action-bar">
             <Label class="action-bar-title" text="Mea Kanu" horizontalAlignment="center" />
-            <ActionItem @tap="openCam" android.systemIcon="picture_frame" android.position="actionBar"/>
+            <ActionItem @tap="uploadPicture" android.systemIcon="ic_menu_upload" android.position="actionBar"/>
             <NavigationButton text="Go Back" android.systemIcon="ic_menu_camera" @tap="openCam"/>
         </ActionBar>
         <RadListView ref="listView" for="plant in plantList" @itemTap="onItemTap" class="list-group">
@@ -19,19 +19,23 @@
                     <StackLayout row="2" col="1" verticalAlignment="center" class="list-group-item-text">
                         <Label class="p-b-10">
                             <FormattedString>
-                                <Span text.decode="&#xf0c3;   " class="fa text-primary"/>
+                                <Span text.decode="&#xf12a;   " class="fa text-primary"/>
                                 <Span :text="plant.label"/>
                             </FormattedString>
                         </Label>
 
                         <Label class="p-b-10">
-                            <Span text.decode="&#xf12a;   " class="fa text-primary"/>
+                            <FormattedString>
+                            <Span text.decode="&#xf0ac;   " class="fa text-primary"/>
                             <Span :text="plant.scientificName"/>
+                            </FormattedString>
                         </Label>
 
                         <Label class="p-b-10">
-                            <Span text.decode="&#xf085;   " class="fa text-primary"/>
+                            <FormattedString>
+                            <Span text.decode="&#xf0c3;   " class="fa text-primary"/>
                             <Span :text="plant.hawaiianName"/>
+                            </FormattedString>
                         </Label>
                     </StackLayout>
                 </GridLayout>
@@ -50,11 +54,17 @@
 
     import * as camera from "nativescript-camera";
     import axios from 'axios';
+    //import * as axios from "axios/dist/axios";
+    import * as imageSource from "tns-core-modules/image-source";
+    var imagepicker = require("nativescript-imagepicker");
+    const enums = require("ui/enums");
     export default {
 
         data() {
             return {
                 picture: null,
+                pictureBase64String: null,
+                pictureAxios: null,
                 plantList: [
                     {name: "Acalypha Hispida", scientificName: 'placeholder', hawaiianName: 'hawaii placeholder', label: 'invasive', picture: "~/images/Acalypha_hispida.jpg"},
                     {name: "Alocasia Macrorrhiza", scientificName: 'placeholder', hawaiianName: 'hawaii placeholder', label: 'endangered', picture: "~/images/Alocasia_macrorrhiza.jpg"},
@@ -70,28 +80,76 @@
             }
         },
         methods: {
+
             openCam() {
-                let imageModule = require('ui/image');
                 camera.requestPermissions();
-
-                        camera.takePicture({width:300, height:300, keepAspectRatio: true, saveToGallery: true})
-                            .then(function (imageAsset){
-                                console.log("Result is an image asset instance");
-                                let image = new imageModule.Image();
-                                image.src = imageAsset;
-                                axios.post('https://mea-kanu.firebaseio.com/data.json', image.src)
-                                    .then(response => {
-                                        console.log(response);
-                                    }, error => {
-                                        console.log(error);
-                                    })
-                            }).catch(function (err) {
-                            console.log("Error -> " + err.message);
+                // console.log("1");
+                camera
+                    .takePicture({width: 300, height: 300, keepAspectRatio: true, saveToGallery: true})
+                    .then(imageAsset => {
+                        // console.log("2");
+                        this.picture = imageAsset;
+                        // console.log("5");
+                        let source = new imageSource.ImageSource();
+                        // console.log("6");
+                        source.fromAsset(imageAsset).then(source => {
+                            // console.log("4");
+                            this.pictureBase64String = source.toBase64String("png", 100);
+                            // console.log(this.pictureBase64String);
+                            // console.log("Here I am");
                         });
+                        // console.log("Is axios doing anything?");
+                        axios.post('https://mea-kanu.firebaseio.com/data.json', {ImageContent: this.pictureBase64String.toString()})
+                            .then(response => {
+                                let result = response.data;
+                                // console.log("Success: firebase is responding to your shit");
+                                // console.log(result);
+                            }, error => {
+                                console.error(error);
+                            });
 
+                    })
             },
-            uploadPic() {
+            uploadPicture() {
+                console.log("Hitting uploadPicture");
+                let context = imagepicker.create({ mode: "single" });
+                context
+                    .authorize()
+                    .then(function() {
+                        console.log("fuck1");
+                        return context.present();
+                    })
+                    .then(function(selection) {
+                        console.log("fuck2");
+                         selection.forEach(function(selected) {
+                            console.log("fuck3");
+                            console.log(selected);
+                             let source = new imageSource.ImageSource();
+                             console.log("fuck4");
+                             source.fromAsset(selected).then(source => {
+                                 this.pictureBase64String = source.toBase64String("png", 100);
+                                 console.log(this.pictureBase64String);
+                                 console.log("Here I am");
+                             });
 
+                         });
+                            //this.picture = selection;
+                            console.log("fuck5");
+
+
+
+                            axios.post('https://mea-kanu.firebaseio.com/data.json', {ImageContent: this.pictureBase64String.toString()})
+                                    .then(response => {
+                                        let result = response.data;
+                                        console.log("Success: firebase is responding to your shit");
+                                        console.log(result);
+                                    }, error => {
+                                        console.error(error);
+                                    });
+
+                    }).catch(function(e){
+                  console.error(e);
+                });
             },
             goBack() {
                 console.log('testing goBack function is this getting updated');
