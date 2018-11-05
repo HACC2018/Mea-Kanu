@@ -63,7 +63,8 @@
         data() {
             return {
                 picture: null,
-                pictureBase64String: null,
+                imagePicker: [],
+                pictureBase64String: '',
                 pictureAxios: null,
                 plantList: [
                     {name: "Acalypha Hispida", scientificName: 'placeholder', hawaiianName: 'hawaii placeholder', label: 'invasive', picture: "~/images/Acalypha_hispida.jpg"},
@@ -88,6 +89,7 @@
                     .takePicture({width: 300, height: 300, keepAspectRatio: true, saveToGallery: true})
                     .then(imageAsset => {
                         // console.log("2");
+                        console.log(imageAsset);
                         this.picture = imageAsset;
                         // console.log("5");
                         let source = new imageSource.ImageSource();
@@ -95,7 +97,7 @@
                         source.fromAsset(imageAsset).then(source => {
                             // console.log("4");
                             this.pictureBase64String = source.toBase64String("png", 100);
-                            // console.log(this.pictureBase64String);
+                            console.log(this.pictureBase64String);
                             // console.log("Here I am");
                         });
                         // console.log("Is axios doing anything?");
@@ -112,6 +114,7 @@
             },
             uploadPicture() {
                 console.log("Hitting uploadPicture");
+                console.log(this.pictureBase64String);
                 let context = imagepicker.create({ mode: "single" });
                 context
                     .authorize()
@@ -122,34 +125,47 @@
                     .then(function(selection) {
                         console.log("fuck2");
                          selection.forEach(function(selected) {
+                         });
+
                             console.log("fuck3");
-                            console.log(selected);
+                            //console.log(selected);
                              let source = new imageSource.ImageSource();
                              console.log("fuck4");
-                             source.fromAsset(selected).then(source => {
-                                 this.pictureBase64String = source.toBase64String("png", 100);
+                             // console.log(context);
+                             // console.log(selection);
+                             // console.log(selection[0]);
+                             source.fromAsset(selection[0]).then(source => {
+                                 console.log("hello");
+
+                                //  console.log(source.toBase64String("png", 100));
+                                //  console.log("what is going on");
+                                 console.log(this.pictureBase64String);
+                                this.pictureBase64String = source.toBase64String("png", 100);
                                  console.log(this.pictureBase64String);
                                  console.log("Here I am");
                              });
-
-                         });
-                            //this.picture = selection;
-                            console.log("fuck5");
-
-
-
-                            axios.post('https://mea-kanu.firebaseio.com/data.json', {ImageContent: this.pictureBase64String.toString()})
-                                    .then(response => {
-                                        let result = response.data;
-                                        console.log("Success: firebase is responding to your shit");
-                                        console.log(result);
-                                    }, error => {
-                                        console.error(error);
-                                    });
+                        axios.post('https://mea-kanu.firebaseio.com/data.json', {ImageContent: source.toBase64String("png", 100).toString()})
+                            .then(response => {
+                                let result = response.data;
+                                console.log("Success: firebase is responding to your shit");
+                                console.log(result);
+                            }, error => {
+                                console.log("HEREIAM");
+                                console.error(error);
+                            });
 
                     }).catch(function(e){
                   console.error(e);
                 });
+                // axios.post('https://mea-kanu.firebaseio.com/data.json', {ImageContent: this.pictureBase64String.toString()})
+                //     .then(response => {
+                //         let result = response.data;
+                //         console.log("Success: firebase is responding to your shit");
+                //         console.log(result);
+                //     }, error => {
+                //         console.log("HEREIAM");
+                //         console.error(error);
+                //     });
             },
             goBack() {
                 console.log('testing goBack function is this getting updated');
