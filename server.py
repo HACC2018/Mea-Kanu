@@ -33,25 +33,28 @@ def EncodeDecode(img):
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
-    def do_GET(self):
-        self.send_response(200)
-        self.end_headers()
-        self.wfile.write(b'Hello, world!')
-
     def do_POST(self):
         sumplant = []
+        #obtain the length of the message being sent
         content_length = int(self.headers['Content-Length'])
+        
+        #parse the information
         body = self.rfile.read(content_length)
+        
+        #confirm successful request
         self.send_response(200)
         self.end_headers()
-        print(chardet.detect(body))
         
-        print(type(body))
+        #determine what type of encoding the file is in by calling
+        #EncodeDecode to obtain ensure encoding is base64
         body = EncodeDecode(body)
+
+        #decode the file and download into pwd
         decode = base64.b64decode(body)
         output_file = open("new_aloe.jpg", "wb")
         output_file.write(decode)
         output_file.close()
+
 
         NETp = '../MeaKanu'
         Best_weightsp = 'Best-weights-PLANT'
