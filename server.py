@@ -10,6 +10,7 @@ import numpy as np
 import os,cv2
 from tensorflow.python.keras.utils import np_utils
 import csv
+import json
 
 
 def EncodeDecode(img):
@@ -93,33 +94,20 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             Z = [x for _,x in sorted(zip(ClassPlantPred,PlantPredClass), reverse=True)]
 
         print(Z)
+        #print(ClassPlantPred)
+        percentages = []
+        for percent in ClassPlantPred:
+            percentages.append(round(percent * 100, 2))
+        print(percentages)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        response = BytesIO()
-        response.write(b'This is POST request. ')
-        response.write(b'Received: ')
-        response.write(body)
-        self.wfile.write(b"Hello")
+        data = {
+            "PNO": Z,
+            "Percents" : percentages
+        }
+        
+        json_string = json.dumps(data)
+        print(json_string)
+        self.wfile.write(json_string.encode('utf-8'))
         
         
         #self.send_response(200, "Success")
