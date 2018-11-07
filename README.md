@@ -3,7 +3,7 @@
 Mea Kanu is a mobile application that uses Plant Identification through leading edge machine learning and artificial intelligence techniques known as fine grain categorization. The major technologies involved are python, javascript, HTTP,back end as a service (BaaS), artificial intellgence, neural networks, machine learning. 
 
 1. [Introduction](#Introduction)
-2. Installation
+2. [Installation](#Installation)
 
 ## Introduction
 
@@ -23,9 +23,12 @@ Mea Kanu translates from Hawaiian as Plant
 
 ### Running the server locally:
 
-  In order to run this program several python libraries must be installed. 
+  In order to run the server several python libraries must be installed. 
   
   Start by first installing python 3 on your corresponding operating system as follows:
+  
+  ##### Note: If at any point a permission error appears, prepend the installation command with sudo or open the terminal in
+  #####       administrator mode on Windoes
   
   ####  Windows:
   
@@ -63,5 +66,46 @@ Mea Kanu translates from Hawaiian as Plant
      python 3.6.5
    ```
 
+Once python is installed, pip3 should be installed with it. Use this to install the rest of the dependencies.
+The server and machine learning program use several libraries as listed below:
+
+#### Machine Learning Libraries
+* tensorflow
+* keras
+* cv2
+
+#### Server Libraries
+* base64
+* json
+
+To install the machine learning libraries start with tensorflow:
+
+```pip install tensorflow```
+
+Once the tensorflow package is installed the Keras package can be installed:
+
+```pip install keras```
+
+Finally the cv2 library can be added
+
+#### Windows
+
+Follow the steps found on the CV2 website found [here](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html)
+
+#### Mac
+
+#### Linux
+
+Enter the following command:
+
+```
+$ sudo apt-get install python-opencv
+```
+
+Verify the installation with:
+
+```
+
+```
 This mobile phone application takes pictures from your phones camera or gallery then 
 Privacy Policy. Our App asks for permission to use your device's camera and its file system so that you can take/upload pictures of plants.
