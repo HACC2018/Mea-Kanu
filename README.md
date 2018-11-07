@@ -41,7 +41,7 @@ Mea Kanu translates from Hawaiian as Plant
       
    #### Mac:
     
-    ```brew install python3```
+    brew install python3
     
    #### Linux (Ubuntu):
    
