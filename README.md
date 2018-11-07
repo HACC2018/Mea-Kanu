@@ -25,34 +25,39 @@ Mea Kanu translates from Hawaiian as Plant
   
   ####  Windows:
   
-  Open a browser window and navigate to the Download page for Windows at python.org.
-  Underneath the heading at the top that says Python Releases for Windows, click on the link for the Latest Python 3       Release - Python 3.x.x. (As of this writing, the latest is Python 3.6.5.)
-      Scroll to the bottom and select either Windows x86-64 executable installer for 64-bit or Windows x86 executable installer for 32-bit. (See below.)
-      Important: You want to be sure to check the box that says Add Python 3.x to PATH as shown to ensure that the interpreter will be placed in your execution path.
+  1.  Open a browser window and navigate to the Download page for Windows at python.org.
+  
+  2.  Underneath the heading at the top that says Python Releases for Windows, click on the link for the Latest Python 3    
+      Release - Python 3.x.x. (As of this writing, the latest is Python 3.6.5.)
+  
+  3.  Scroll to the bottom and select either Windows x86-64 executable installer for 64-bit or Windows x86 executable  
+      installer for 32-bit. (See below.)
       
-      Run the installer. 
+  4.  Important: You want to be sure to check the box that says Add Python 3.x to PATH as shown to ensure that the   
+      interpreter will be placed in your execution path.
+      
+  5.  Run the installer. 
       
       
    #### Mac:
     
+    ```brew install python3```
     
    #### Linux (Ubuntu):
-    ```
-    $ sudo apt-get update
-    $ sudo apt-get install python3.6
-    ```
-    
-   Verify installation by opening the terminal a$ sudo apt-get update
-$ sudo apt-get install python3.6nd typing the following command:
-    
-    ```
-    python3 --version
-    ```
-    
-   Your output should be similar to the following:
-    ```
-    python 3.6.5
-    ```
+   
+   Install python3 by opening the terminal and enter the follwoing commands:
+   
+   ```
+   $ sudo apt-get update
+   $ sudo apt-get install python3.6
+   ```
+   
+   Verify a successful install by entering the following command and verifying version number:
+   
+   ```
+   $ python --version
+     python 3.6.5
+   ```
 
 This mobile phone application takes pictures from your phones camera or gallery then 
 Privacy Policy. Our App asks for permission to use your device's camera and its file system so that you can take/upload pictures of plants.
