@@ -23,19 +23,20 @@ Mea Kanu translates from Hawaiian as Plant
   
   Start by first installing python 3 on your corresponding operating system as follows:
   
-  #####  Windows:
-      Open a browser window and navigate to the Download page for Windows at python.org.
-      Underneath the heading at the top that says Python Releases for Windows, click on the link for the Latest Python 3       Release - Python 3.x.x. (As of this writing, the latest is Python 3.6.5.)
+  ####  Windows:
+  
+  Open a browser window and navigate to the Download page for Windows at python.org.
+  Underneath the heading at the top that says Python Releases for Windows, click on the link for the Latest Python 3       Release - Python 3.x.x. (As of this writing, the latest is Python 3.6.5.)
       Scroll to the bottom and select either Windows x86-64 executable installer for 64-bit or Windows x86 executable installer for 32-bit. (See below.)
       Important: You want to be sure to check the box that says Add Python 3.x to PATH as shown to ensure that the interpreter will be placed in your execution path.
       
       Run the installer. 
       
       
-   ##### Mac:
+   #### Mac:
     
     
-   ##### Linux (Ubuntu):
+   #### Linux (Ubuntu):
     ```
     $ sudo apt-get update
     $ sudo apt-get install python3.6
