@@ -4,7 +4,7 @@ Mea Kanu is a mobile application that uses Plant Identification through leading 
 
 1. [Introduction](#Introduction)
 2. [Installation](#Installation)
-3. [App Information](#App Information)
+3. [App Information](#App-Information)
 
 ## Introduction
 
