@@ -28,7 +28,7 @@ Mea Kanu translates from Hawaiian as Plant
   Start by first installing python 3 on your corresponding operating system as follows:
   
   ##### Note: If at any point a permission error appears, prepend the installation command with sudo or open the terminal in
-  #####       administrator mode on Windoes
+  #####           administrator mode on Windows
   
   ####  Windows:
   
