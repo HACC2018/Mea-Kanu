@@ -4,6 +4,7 @@ Mea Kanu is a mobile application that uses Plant Identification through leading 
 
 1. [Introduction](#Introduction)
 2. [Installation](#Installation)
+3. [App Information](#App Information)
 
 ## Introduction
 
@@ -28,7 +29,7 @@ Mea Kanu translates from Hawaiian as Plant
   Start by first installing python 3 on your corresponding operating system as follows:
   
   ##### Note: If at any point a permission error appears, prepend the installation command with sudo or open the terminal in
-  #####           administrator mode on Windows
+  #####       administrator mode on Windows
   
   ####  Windows:
   
@@ -74,17 +75,16 @@ The server and machine learning program use several libraries as listed below:
 * keras
 * cv2
 
-#### Server Libraries
+#### Encoding Libraries
 * base64
-* json
 
 To install the machine learning libraries start with tensorflow:
 
-```pip install tensorflow```
+```pip3 install tensorflow```
 
 Once the tensorflow package is installed the Keras package can be installed:
 
-```pip install keras```
+```pip3 install keras```
 
 Finally the cv2 library can be added
 
@@ -105,7 +105,30 @@ $ sudo apt-get install python-opencv
 Verify the installation with:
 
 ```
+$ python
+>>>import cv2 as cv
+>>>print(cv2.__version__)
+3.4.3
+>>>
+```
+If no errors appear the library has successfully been installed.
+
+The encoding libary base 64 is the only installation remaining and can be done with the following command:
 
 ```
+pip install pybase64
+```
+Once all the dependencies have been installed the server can be succesfully hosted on a local machine. Get the public IP address of your machine [here](www.whatsmyip.com) assign the IP address and desired port in the final two lines of the server code and run the server using:
+
+```
+python3 server.py
+```
+
+Connect to the host from any front end service and send a HTTP POST request with any image file to classify the image.
+
+The application can take any image and classify what type of plant it is.
+
+## App Information
+
 This mobile phone application takes pictures from your phones camera or gallery then 
 Privacy Policy. Our App asks for permission to use your device's camera and its file system so that you can take/upload pictures of plants.
