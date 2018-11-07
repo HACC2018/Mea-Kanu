@@ -4,6 +4,7 @@ from io import BytesIO
 import os
 import base64
 import chardet
+import socket
 
 def EncodeDecode(img):
     #Get the type of encoding the bytes are saved in from the chardet.detect call
@@ -47,7 +48,11 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         response.write(b'This is POST request. ')
         response.write(b'Received: ')
         response.write(body)
-        self.wfile.write(response.getvalue())
+        self.wfile.write(b"Hello")
+        
+        
+        #self.send_response(200, "Success")
+        #self.end_headers()
 
 
 httpd = HTTPServer(('localhost', 8000), SimpleHTTPRequestHandler)
