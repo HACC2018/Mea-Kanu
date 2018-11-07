@@ -2,8 +2,9 @@
 
 Mea Kanu is a mobile application that uses Plant Identification through leading edge machine learning and artificial intelligence techniques known as fine grain categorization. The major technologies involved are python, javascript, HTTP,back end as a service (BaaS), artificial intellgence, neural networks, machine learning. 
 
-1. [Introduction] (#Introduction)
+1. [Introduction](#Introduction)
 2. Installation
+
 ## Introduction
 
 The application is trained to accurately identify 100 different plant species found around the island.
