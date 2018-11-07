@@ -41,12 +41,15 @@ Mea Kanu translates from Hawaiian as Plant
     $ sudo apt-get update
     $ sudo apt-get install python3.6
     ```
-    verify installation by opening the terminal and typing the following command:
+    
+   Verify installation by opening the terminal a$ sudo apt-get update
+$ sudo apt-get install python3.6nd typing the following command:
+    
     ```
     python3 --version
     ```
     
-    your output should be similar to the following:
+   Your output should be similar to the following:
     ```
     python 3.6.5
     ```
