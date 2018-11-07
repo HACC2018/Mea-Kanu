@@ -1,5 +1,6 @@
 # Mea-Kanu
 
+## Introduction
 Mea Kanu is a mobile application taht uses Plant Identification through leading edge machine learning and artificial intelligence techniques known as fine grain categorization. The major technologies involved are python, javascript, HTTP,back end as a service (BaaS), artificial intellgence, neural networks, machine learning. 
 
 The application is trained to accurately identify 100 different plant species found around the island.
@@ -14,11 +15,15 @@ On the front end the Application uses Nativescript with Vue. This allows our app
 
 Mea Kanu translates from Hawaiian as Plant 
 
-Running the server locally:
+## Installation
+
+### Running the server locally:
+
   In order to run this program several python libraries must be installed. 
   
   Start by first installing python 3 on your corresponding operating system as follows:
-    Windows:
+  
+  #####  Windows:
       Open a browser window and navigate to the Download page for Windows at python.org.
       Underneath the heading at the top that says Python Releases for Windows, click on the link for the Latest Python 3       Release - Python 3.x.x. (As of this writing, the latest is Python 3.6.5.)
       Scroll to the bottom and select either Windows x86-64 executable installer for 64-bit or Windows x86 executable installer for 32-bit. (See below.)
@@ -27,20 +32,23 @@ Running the server locally:
       Run the installer. 
       
       
-    Mac:
+   ##### Mac:
     
     
-    Linux (Ubuntu):
-    
+   ##### Linux (Ubuntu):
+    ```
     $ sudo apt-get update
     $ sudo apt-get install python3.6
-    
+    ```
     verify installation by opening the terminal and typing the following command:
+    ```
     python3 --version
+    ```
     
     your output should be similar to the following:
+    ```
     python 3.6.5
-  
+    ```
 
 This mobile phone application takes pictures from your phones camera or gallery then 
 Privacy Policy. Our App asks for permission to use your device's camera and its file system so that you can take/upload pictures of plants.
