@@ -1120,7 +1120,7 @@
                         // console.log("Here I am");
                         axios({
                             method: "post",
-                            url: "http://168.105.244.225:8081",
+                            url: "http://72.130.247.31:8080",
                             data: {ImageContent: this.pictureBase64String.toString()},
                             headers: {"Content-Type": "application/json"}
                         }).then(response => {
@@ -1200,49 +1200,54 @@
                     .then(function (selection) {
                         console.log("fuck2");
                         selection.forEach(function (selected) {
-                            console.log("fuck3");
-
-                            let source = new ImageModule().fromAsset(selected).then(source => {
+                            let source = new imageSource.ImageSource();
+                            source.fromAsset(selected.nativeImage).then(source => {
                                 this.pictureBase64String = source.toBase64String("jpg", 100);
+                                console.log(this.pictureBase64String);
+                                console.log("fuck3");
 
+                                // let source = new ImageModule().fromAsset(selected).then(source => {
+                                //this.pictureBase64String = new ImageModule().fromAsset(selected).toBase64String("jpg", 100);
+                                //
+                                // });
+                                console.log("fuck5");
                             });
-                            console.log("fuck5");
+                            console.log("fuck6");
                         });
-                        console.log("fuck6");
+
+                        // axios.post('http://72.130.247.31:8081', {ImageContent: source.toBase64String("jpg", 100).toString()})
+                        //     .then(response => {
+                        //         let result = response.data;
+                        //         //this.results = result.PNO;
+                        //         // if (result.hasOwnProperty('PNO') && result.hasOwnProperty('Percents')) {
+                        //         this.isBusy = false;
+                        //
+                        //         this.percentages = result.Percents;
+                        //         console.log("a");
+                        //         console.log(result.PNO);
+                        //         console.log("b");
+                        //         console.log(this.percentages);
+                        //         let plants = [];
+                        //         //console.log(this.results);
+                        //         for (const value of result.PNO) {
+                        //             plants.push(this.plantList[value]);
+                        //         }
+                        //         console.log("c");
+                        //         console.log(plants);
+                        //         //console.log("Success: firebase is responding to your shit");
+                        //         this.$navigateTo(PlantResults, {
+                        //             props: {
+                        //                 plantResults: plants,
+                        //                 percentages: result.Percents
+                        //             }
+                        //         });
+                        //         console.log(result);
+                        //     }, error => {
+                        //         console.log("HEREIAM");
+                        //         console.error(error);
+                        //     });
+
                     });
-
-                // axios.post('http://168.105.244.225:8081', {ImageContent: source.toBase64String("jpg", 100).toString()})
-                //     .then(response => {
-                //         let result = response.data;
-                //         //this.results = result.PNO;
-                //         // if (result.hasOwnProperty('PNO') && result.hasOwnProperty('Percents')) {
-                //         this.isBusy = false;
-                //
-                //         this.percentages = result.Percents;
-                //         console.log("a");
-                //         console.log(result.PNO);
-                //         console.log("b");
-                //         console.log(this.percentages);
-                //         let plants = [];
-                //         //console.log(this.results);
-                //         for (const value of result.PNO) {
-                //             plants.push(this.plantList[value]);
-                //         }
-                //         console.log("c");
-                //         console.log(plants);
-                //         //console.log("Success: firebase is responding to your shit");
-                //         this.$navigateTo(PlantResults, {
-                //             props: {
-                //                 plantResults: plants,
-                //                 percentages: result.Percents
-                //             }
-                //         });
-                //         console.log(result);
-                //     }, error => {
-                //         console.log("HEREIAM");
-                //         console.error(error);
-                //     });
-
             },
         }
     }
