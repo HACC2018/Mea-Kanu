@@ -4,7 +4,7 @@ The purpose of Mea Kanu is to use technology to inspire the youth to mālama of 
 Mea Kanu uses plant identification through image recognition and leading edge machine learning with
 artificial intelligence techniques known as fine grain categorization. The major technologies involved are python, 
 vue, javascript, HTTP, artificial intellgence, neural networks, machine learning.  Our app also serves as a extension of 
-the Hawaiian culture by integrating Lāʻau Lapaʻau (Hawaiian Plant Medicine) knowledge into the applicationʻs database.
+the Hawaiian culture by integrating Lāʻau Lapaʻau (Hawaiian Plant Medicine) knowledge into the application's database.
 Mea Kanu is one way that Hawaiians refer to plants.
 
 1. [Introduction](#Introduction)
