@@ -1,6 +1,11 @@
 # Mea-Kanu
 
-Mea Kanu is a mobile application that uses Plant Identification through leading edge machine learning and artificial intelligence techniques known as fine grain categorization. The major technologies involved are python, javascript, HTTP,back end as a service (BaaS), artificial intellgence, neural networks, machine learning. 
+The purpose of Mea Kanu is to use technology to inspire the youth to mālama of our native endangered species.
+Mea Kanu uses plant identification through image recognition and leading edge machine learning with
+artificial intelligence techniques known as fine grain categorization. The major technologies involved are python, 
+vue, javascript, HTTP, artificial intellgence, neural networks, machine learning.  Our app also serves as a extension of 
+the Hawaiian culture by integrating Lāʻau Lapaʻau (Hawaiian Plant Medicine) knowledge into the applicationʻs database.
+Mea Kanu is one way that Hawaiians refer to plants.
 
 1. [Introduction](#Introduction)
 2. [Installation](#Installation)
@@ -9,18 +14,30 @@ Mea Kanu is a mobile application that uses Plant Identification through leading 
 ## Introduction
 
 The application is trained to accurately identify 100 different plant species found around the island.
+We chose an initial dataset that includes about 90% invasive and 10% native species.  The reason being that we wanted
+to the ratio that appears in many low-lying areas of Hawaiʻi.  To make a difference, we would need to know what species are
+doing harm as well as identifying which species need protection.
+
 In order to train the neural network, 4500 images were collected from various sources and compiled into a file system. The 
-folders were then analyzed over the course of a week using segmentation. The resulting product is a highly accurate, fast, and responsive application.
+folders were then analyzed over the course of a week using segmentation. The resulting product is a highly accurate, fast, and 
+responsive application.
 
-The plant identification script is currently loaded onto a local HTTP python server. The app was originally planned to be hosted on a cloud based server, but the neural network is a large file (~130 Mb), and we did not want to incur hosting costs. Future plans include moving the entire Mea Kanu architecture into the cloud, specifically Amazon Web Services.
+The plant identification script is currently loaded onto a local HTTP python server. The app was originally planned to be 
+hosted on a cloud based server, but the neural network is a large file (~130 Mb), and we did not want to incur hosting costs. 
+Future plans include moving the entire Mea Kanu architecture into the cloud, specifically Amazon Web Services.
 
-On the front end the Application uses Nativescript with Vue. This allows our application to be transpiled into working Android and iOS applications.
+On the front end the Application uses Nativescript with Vue. This allows our application to be transpiled into working Android 
+and iOS applications.
 
 
-
-Mea Kanu translates from Hawaiian as Plant 
+ 
 
 ## Installation
+
+##Running on smart phone:
+
+  Mea Kanu is available for download on the Google Play store at the moment.  It will be available on the App Store 
+  in the future.  
 
 ### Running the server locally:
 
@@ -130,5 +147,6 @@ The application can take any image and classify what type of plant it is.
 
 ## App Information
 
-This mobile phone application takes pictures from your phones camera or gallery then 
-Privacy Policy. Our App asks for permission to use your device's camera and its file system so that you can take/upload pictures of plants.
+This mobile phone application takes pictures from your phone's camera or gallery after goin through the 
+Privacy Policy. Our App asks for permission to use your device's camera and its file system so that you can take/upload
+pictures of plants.
