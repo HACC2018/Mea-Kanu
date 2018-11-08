@@ -56,7 +56,7 @@
 
 
 
-                <Button class="btn btn-primary" text="button"/>
+                <!--<Button class="btn btn-primary" text="button"/>-->
             </StackLayout>
         </ScrollView>
     </Page>
