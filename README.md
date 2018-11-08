@@ -1,11 +1,11 @@
 # Mea-Kanu
 
 The purpose of Mea Kanu is to use technology to inspire the youth to mālama our native endangered species.
-Mea Kanu uses plant identification through image recognition and leading edge machine learning with
-artificial intelligence techniques known as fine grain categorization. The major technologies involved are python, 
-vue, javascript, HTTP, artificial intellgence, neural networks, machine learning.  Our app also serves as a extension of 
+Mea Kanu uses plant identification through image recognition and cutting edge machine learning with the
+artificial intelligence technique known as fine grain categorization. The major technologies involved are python, 
+vue, javascript, HTTP, artificial intellgence, neural networks, and machine learning.  Our app also serves as a extension of 
 the Hawaiian culture by integrating Lāʻau Lapaʻau (Hawaiian Plant Medicine) knowledge into the application's database.
-Mea Kanu is one way that Hawaiians refer to plants.
+Mea Kanu is one of the ways that Hawaiians refer to plants.
 
 1. [Introduction](#Introduction)
 2. [Installation](#Installation)
@@ -14,7 +14,7 @@ Mea Kanu is one way that Hawaiians refer to plants.
 ## Introduction
 
 The application is trained to accurately identify 100 different plant species found around the island.
-We chose an initial dataset that includes about 90% invasive and 10% native species.  The reason being that we wanted to 
+We chose an initial dataset that includes roughly 90% invasive and 10% native species.  The reason being that we wanted to 
 emulate the  ratio that appears in many low-lying areas of Hawaiʻi.  To make a difference, we would need to know what species 
 are doing harm as well as identifying which species need protection.
 
@@ -147,6 +147,6 @@ The application can take any image and classify what type of plant it is.
 
 ## App Information
 
-This mobile phone application takes pictures from your phone's camera or gallery after goin through the 
-Privacy Policy. Our App asks for permission to use your device's camera and its file system so that you can take/upload
+The mobile phone application allows the user to take pictures using the device's camera or using a picture from a gallery after going 
+through the Privacy Policy. Our App asks for permission to use your device's camera and its file system so that you can take/upload
 pictures of plants.
