@@ -34,7 +34,7 @@ and iOS applications.
 
 ## Installation
 
-##Running on smart phone:
+## Running on smart phone:
 
   Mea Kanu is available for download on the Google Play store at the moment.  It will be available on the App Store 
   in the future.  
