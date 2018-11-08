@@ -14,9 +14,9 @@ Mea Kanu is one way that Hawaiians refer to plants.
 ## Introduction
 
 The application is trained to accurately identify 100 different plant species found around the island.
-We chose an initial dataset that includes about 90% invasive and 10% native species.  The reason being that we wanted
-to the ratio that appears in many low-lying areas of Hawaiʻi.  To make a difference, we would need to know what species are
-doing harm as well as identifying which species need protection.
+We chose an initial dataset that includes about 90% invasive and 10% native species.  The reason being that we wanted to 
+emulate the  ratio that appears in many low-lying areas of Hawaiʻi.  To make a difference, we would need to know what species 
+are doing harm as well as identifying which species need protection.
 
 In order to train the neural network, 4500 images were collected from various sources and compiled into a file system. The 
 folders were then analyzed over the course of a week using segmentation. The resulting product is a highly accurate, fast, and 
