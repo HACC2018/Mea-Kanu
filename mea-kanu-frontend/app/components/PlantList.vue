@@ -4,8 +4,12 @@
             <Label class="action-bar-title" text="Mea Kanu" horizontalAlignment="center"/>
             <ActionItem @tap="uploadPicture" android.systemIcon="ic_menu_upload" android.position="actionBar"/>
             <NavigationButton text="Go Back" android.systemIcon="ic_menu_camera" @tap="openCam"/>
-            <ActivityIndicator :busy="isBusy" class="activity-indicator" color="orange"/>
+            <!--<ActivityIndicator :busy="isBusy" class="activity-indicator" color="orange"/>-->
         </ActionBar>
+        <!--<StackLayout>-->
+        <!--<Button :text="textPicture" class="btn btn-primary" marginTop="20" @tap="takePicture"></Button>-->
+        <!--<Image :src="pictureFromCamera"></Image>-->
+        <!--</StackLayout>-->
 
         <RadListView ref="listView" for="(plant, index) in plantList" @itemTap="onItemTap" class="list-group">
             <ListViewLinearLayout v-tkListViewLayout scrollDirection="vertical"/>
@@ -17,7 +21,8 @@
 
                     <Label row="1" class="hr-dark m-t-5 m-b-5" colSpan="2"/>
 
-                    <Image row="2" :src="plant.picture" stretch="aspectFill" height="120" class="m-r-20" loadMode="async"/>
+                    <Image row="2" :src="plant.picture" stretch="aspectFill" height="120" class="m-r-20"
+                           loadMode="async"/>
 
                     <StackLayout row="2" col="1" verticalAlignment="center" class="list-group-item-text">
                         <Label class="p-b-10">
@@ -68,6 +73,8 @@
 
         data() {
             return {
+                // pictureFromCamera: null,
+                // textPicture: "Take a Picture",
                 isBusy: false,
                 picture: null,
                 imagePicker: [],
@@ -1094,64 +1101,69 @@
                 camera.requestPermissions();
                 // console.log("1");
                 camera
-                    .takePicture({width: 300, height: 300, keepAspectRatio: true, saveToGallery: true})
-                    .then(imageAsset => {
-                        // console.log("2");
-                        console.log(imageAsset);
-                        this.picture = imageAsset;
-                        // console.log("5");
-                        let source = new imageSource.ImageSource();
-                        // console.log("6");
-                        source.fromAsset(imageAsset).then(source => {
-                            // console.log("4");
-                            this.pictureBase64String = source.toBase64String("png", 100);
-                            console.log(this.pictureBase64String);
-                            // console.log("Here I am");
-                        });
-                        // console.log("Is axios doing anything?");
-                        // axios.post('http://168.105.232.56:8081', this.pictureBase64String)
-                        //     .then(response => {
-                        //         let result = response.data;
-                        //         // console.log("Success: firebase is responding to your shit");
-                        //         // console.log(result);
-                        //     }, error => {
-                        //         console.error(error);
-                        //     });
+                    .takePicture({
+                        width: 300,
+                        height: 300,
+                        keepAspectRatio: true,
+                        saveToGallery: true
+                    }).then(imageAsset => {
+                    // console.log("2");
+                    console.log(imageAsset);
+                    this.picture = imageAsset;
+                    // console.log("5");
+                    let source = new imageSource.ImageSource();
+                    // console.log("6");
+                    source.fromAsset(imageAsset).then(source => {
+                        // console.log("4");
+                        this.pictureBase64String = source.toBase64String("jpg", 100);
+                        console.log(this.pictureBase64String);
+                        // console.log("Here I am");
                         axios({
                             method: "post",
-                            url: "http://168.105.232.56:8081",
+                            url: "http://168.105.244.225:8081",
                             data: {ImageContent: this.pictureBase64String.toString()},
                             headers: {"Content-Type": "application/json"}
                         }).then(response => {
                             let result = response.data;
                             //this.results = result.PNO;
-                            if (result.hasOwnProperty('PNO') && result.hasOwnProperty('Percents')) {
-                                this.isBusy = false;
-                                this.percentages = result.Percents;
-                                let plants = [];
-                                //console.log(this.results);
-                                // for(let i = 0; i < result.PNO.length; i++) {
-                                //     plants.push()
-                                // }
-                                for (const value of result.PNO) {
-                                    plants.push(this.plantList[value]);
+                            // if (result.hasOwnProperty('PNO') && result.hasOwnProperty('Percents')) {
+                            //     this.isBusy = false;
+                            this.percentages = result.Percents;
+                            let plants = [];
+                            //console.log(this.results);
+                            // for(let i = 0; i < result.PNO.length; i++) {
+                            //     plants.push()
+                            // }
+                            console.log("a");
+                            console.log(result.PNO);
+                            console.log(result.PNO[0]);
+                            console.log(result.PNO[1]);
+                            console.log("b");
+                            console.log(this.percentages);
+                            for (const value of result.PNO) {
+                                console.log(this.plantList[value]);
+                                plants.push(this.plantList[value]);
+                            }
+                            console.log("c");
+                            console.log(plants[0]);
+                            console.log(plants[0].hawaiianName);
+                            console.log(plants[1]);
+                            //console.log("Success: firebase is responding to your shit");
+                            this.$navigateTo(PlantResults, {
+                                props: {
+                                    plantResults: plants,
+                                    percentages: result.Percents
                                 }
-                                //console.log("Success: firebase is responding to your shit");
-                                this.$navigateTo(PlantDetails, {
-                                    props: {
-                                        plantResults: plants,
-                                        percentages: result.Percents
-                                    }
-                                });
-                            }
-                            else {
-                                this.isBusy = false;
-                                alert({
-                                    title: "Error",
-                                    message: "Error Occured, upload or take the picture again",
-                                    okButtonText: "Ok"
-                                });
-                            }
+                            });
+                            // }
+                            // else {
+                            //     this.isBusy = false;
+                            //     alert({
+                            //         title: "Error",
+                            //         message: "Error Occured, upload or take the picture again",
+                            //         okButtonText: "Ok"
+                            //     });
+                            // }
 
                             // });
                             console.log(result);
@@ -1159,13 +1171,25 @@
                         }, error => {
                             console.error(error);
                         });
-
                     });
+                    // console.log("Is axios doing anything?");
+                    // axios.post('http://168.105.232.56:8081', this.pictureBase64String)
+                    //     .then(response => {
+                    //         let result = response.data;
+                    //         // console.log("Success: firebase is responding to your shit");
+                    //         // console.log(result);
+                    //     }, error => {
+                    //         console.error(error);
+                    //     });
+
+
+                });
+                this.picture = null;
             },
             uploadPicture() {
+                var imageModule = require("tns-core-modules/ui/image");
                 console.log("Hitting uploadPicture");
-                console.log(this.pictureBase64String);
-                this.isBusy = true;
+                //this.isBusy = true;
                 let context = imagepicker.create({mode: "single"});
                 context
                     .authorize()
@@ -1176,67 +1200,51 @@
                     .then(function (selection) {
                         console.log("fuck2");
                         selection.forEach(function (selected) {
-                        });
+                            console.log("fuck3");
 
-                        console.log("fuck3");
-                        //console.log(selected);
-                        let source = new imageSource.ImageSource();
-                        console.log("fuck4");
-                        // console.log(context);
-                        // console.log(selection);
-                        // console.log(selection[0]);
-                        source.fromAsset(selection[0]).then(source => {
-                            console.log("hello");
+                            let source = new ImageModule().fromAsset(selected).then(source => {
+                                this.pictureBase64String = source.toBase64String("jpg", 100);
 
-                            //  console.log(source.toBase64String("png", 100));
-                            //  console.log("what is going on");
-                            console.log(this.pictureBase64String);
-                            this.pictureBase64String = source.toBase64String("png", 100);
-                            console.log(this.pictureBase64String);
-                            console.log("Here I am");
-                        });
-                        axios.post('http://168.105.232.56:8081', {ImageContent: source.toBase64String("png", 100).toString()})
-                            .then(response => {
-                                let result = response.data;
-                                //this.results = result.PNO;
-                                if (result.hasOwnProperty('PNO') && result.hasOwnProperty('Percents')) {
-                                    this.isBusy = false;
-                                    this.percentages = result.Percents;
-                                    let plants = [];
-                                    //console.log(this.results);
-                                    for (const value of result.PNO) {
-                                        plants.push(this.plantList[value]);
-                                    }
-                                    //console.log("Success: firebase is responding to your shit");
-                                    this.$navigateTo(PlantDetails, {
-                                        props: {
-                                            plantResults: plants,
-                                            percentages: result.Percents
-                                        }
-                                    });
-                                }
-                                else {
-                                    this.isBusy = false;
-                                    alert({
-                                        title: "Error",
-                                        message: "Error Occured, upload or take the picture again",
-                                        okButtonText: "Ok"
-                                    });
-                                }
-
-                                // });
-                                console.log(result);
-                            }, error => {
-                                console.log("HEREIAM");
-                                console.error(error);
                             });
+                            console.log("fuck5");
+                        });
+                        console.log("fuck6");
+                    });
 
+                // axios.post('http://168.105.244.225:8081', {ImageContent: source.toBase64String("jpg", 100).toString()})
+                //     .then(response => {
+                //         let result = response.data;
+                //         //this.results = result.PNO;
+                //         // if (result.hasOwnProperty('PNO') && result.hasOwnProperty('Percents')) {
+                //         this.isBusy = false;
+                //
+                //         this.percentages = result.Percents;
+                //         console.log("a");
+                //         console.log(result.PNO);
+                //         console.log("b");
+                //         console.log(this.percentages);
+                //         let plants = [];
+                //         //console.log(this.results);
+                //         for (const value of result.PNO) {
+                //             plants.push(this.plantList[value]);
+                //         }
+                //         console.log("c");
+                //         console.log(plants);
+                //         //console.log("Success: firebase is responding to your shit");
+                //         this.$navigateTo(PlantResults, {
+                //             props: {
+                //                 plantResults: plants,
+                //                 percentages: result.Percents
+                //             }
+                //         });
+                //         console.log(result);
+                //     }, error => {
+                //         console.log("HEREIAM");
+                //         console.error(error);
+                //     });
 
-                    }).catch(function (e) {
-        console.error(e);
-    });
-    },
-    },
+            },
+        }
     }
 </script>
 

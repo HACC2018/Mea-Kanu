@@ -5,7 +5,7 @@
             <Label class="action-bar-title" text="Results" horizontalAlignment="center" />
         </ActionBar>
 
-        <RadListView ref="listView" for="(plant,index) in plantResults"  @itemTap="onItemTap" class="list-group">
+        <RadListView ref="listView" for="(plant,index) in plantData"  @itemTap="onItemTap" class="list-group">
             <ListViewLinearLayout v-tkListViewLayout scrollDirection="vertical"/>
             <v-template>
 
@@ -74,11 +74,43 @@
                 // console.log(e.plant);
                 this.$navigateTo(PlantDetails, {props: {plant: e.item}});
             }
+        },
+        created() {
+            console.log("In PlantAResults.vue");
+            console.log(this.plantData);
+            console.log(this.plantData[0]);
+            console.log(this.plantData[0].species);
+            console.log(this.percentData[0]);
+
         }
     }
 </script>
-<style>
-    .big {
-        font-size: 15;
+<style scoped lang="scss">
+    @import '../app-variables';
+    // End custom common variables
+
+    // Custom styles
+    .list-picture {
+        height: 100;
+        width: 100;
+    }
+
+    .list-group {
+        .list-group-item-content {
+            padding: 8 15 4 15;
+            background-color: $background-light;
+        }
+
+        .list-group-item-text {
+            margin: 2 3;
+        }
+
+        .fa {
+            color: $accent-dark;
+        }
+    }
+
+    .back {
+        background-color: gray;
     }
 </style>
