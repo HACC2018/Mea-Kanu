@@ -62,6 +62,7 @@
 
     import * as camera from "nativescript-camera";
     import axios from 'axios';
+    import * as http from "http";
     //import * as axios from "axios/dist/axios";
     import * as imageSource from "tns-core-modules/image-source";
     import PlantDetails from "./PlantDetails";
@@ -1090,10 +1091,6 @@
         methods: {
             onItemTap(e) {
                 this.$emit("select", e.item);
-                //console.log(e);
-                // console.log(e.item);
-                //console.log(e.item.name);
-                // console.log(e.plant);
                 this.$navigateTo(PlantDetails, {props: {plant: e.item}});
             },
             openCam() {
@@ -1108,6 +1105,7 @@
                         saveToGallery: true
                     }).then(imageAsset => {
                     // console.log("2");
+                    console.log("This is the imageAsset output");
                     console.log(imageAsset);
                     this.picture = imageAsset;
                     // console.log("5");
@@ -1125,15 +1123,8 @@
                             headers: {"Content-Type": "application/json"}
                         }).then(response => {
                             let result = response.data;
-                            //this.results = result.PNO;
-                            // if (result.hasOwnProperty('PNO') && result.hasOwnProperty('Percents')) {
-                            //     this.isBusy = false;
                             this.percentages = result.Percents;
                             let plants = [];
-                            //console.log(this.results);
-                            // for(let i = 0; i < result.PNO.length; i++) {
-                            //     plants.push()
-                            // }
                             console.log("a");
                             console.log(result.PNO);
                             console.log(result.PNO[0]);
@@ -1155,32 +1146,12 @@
                                     percentages: result.Percents
                                 }
                             });
-                            // }
-                            // else {
-                            //     this.isBusy = false;
-                            //     alert({
-                            //         title: "Error",
-                            //         message: "Error Occured, upload or take the picture again",
-                            //         okButtonText: "Ok"
-                            //     });
-                            // }
-
-                            // });
                             console.log(result);
 
                         }, error => {
                             console.error(error);
                         });
                     });
-                    // console.log("Is axios doing anything?");
-                    // axios.post('http://168.105.232.56:8081', this.pictureBase64String)
-                    //     .then(response => {
-                    //         let result = response.data;
-                    //         // console.log("Success: firebase is responding to your shit");
-                    //         // console.log(result);
-                    //     }, error => {
-                    //         console.error(error);
-                    //     });
 
 
                 });
@@ -1188,6 +1159,7 @@
             },
             uploadPicture() {
                 var imageModule = require("tns-core-modules/ui/image");
+
                 console.log("Hitting uploadPicture");
                 //this.isBusy = true;
                 let context = imagepicker.create({mode: "single"});
@@ -1199,21 +1171,56 @@
                     })
                     .then(function (selection) {
                         console.log("fuck2");
-                        selection.forEach(function (selected) {
-                            let source = new imageSource.ImageSource();
-                            source.fromAsset(selected.nativeImage).then(source => {
-                                this.pictureBase64String = source.toBase64String("jpg", 100);
-                                console.log(this.pictureBase64String);
-                                console.log("fuck3");
+                        let source = new imageSource.ImageSource();
+                        console.log("fuck3");
+                        source.fromAsset(selection[0]).then(source => {
+                            console.log("4");
+                            console.log("Here I am");
+                            http.request({
+                                url: "http://72.130.247.31:8080",
+                                method: "POST",
+                                headers: { "Content-Type":"application/json" },
+                                content:{
+                                    ImageContent : source.toBase64String("jpg", 100)
+                                }
+                            })
+                            // axios.post("https://plant-info-mea-kanu.firebaseio.com/data.json", {ImageContent: source.toBase64String("jpg", 100).toString()})
+                            .then(response => {
+                                console.log(response);
+                                console.log(response.data);
+                                let result = response.data;
 
-                                // let source = new ImageModule().fromAsset(selected).then(source => {
-                                //this.pictureBase64String = new ImageModule().fromAsset(selected).toBase64String("jpg", 100);
-                                //
+                                // this.percentages = result.Percents;
+                                // let plants = [];
+                                // console.log("a");
+                                // console.log(result.PNO);
+                                // console.log(result.PNO[0]);
+                                // console.log(result.PNO[1]);
+                                // console.log("b");
+                                // console.log(this.percentages);
+                                // for (const value of result.PNO) {
+                                //     console.log(this.plantList[value]);
+                                //     plants.push(this.plantList[value]);
+                                // }
+                                // console.log("c");
+                                // console.log(plants[0]);
+                                // console.log(plants[0].hawaiianName);
+                                // console.log(plants[1]);
+                                // //console.log("Success: firebase is responding to your shit");
+                                // this.$navigateTo(PlantResults, {
+                                //     props: {
+                                //         plantResults: plants,
+                                //         percentages: result.Percents
+                                //     }
                                 // });
-                                console.log("fuck5");
+                                console.log("printing output of result");
+                                console.log(result);
+
+                            }, error => {
+                                console.error(error);
                             });
-                            console.log("fuck6");
                         });
+
 
                         // axios.post('http://72.130.247.31:8081', {ImageContent: source.toBase64String("jpg", 100).toString()})
                         //     .then(response => {
