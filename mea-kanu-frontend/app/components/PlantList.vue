@@ -6,10 +6,11 @@
             <NavigationButton text="Go Back" android.systemIcon="ic_menu_camera" @tap="openCam"/>
             <!--<ActivityIndicator :busy="isBusy" class="activity-indicator" color="orange"/>-->
         </ActionBar>
-        <!--<StackLayout>-->
-        <!--<Button :text="textPicture" class="btn btn-primary" marginTop="20" @tap="takePicture"></Button>-->
-        <!--<Image :src="pictureFromCamera"></Image>-->
-        <!--</StackLayout>-->
+
+        <!--<Stacklayout>-->
+            <!--<Button text="lambda test" @tap="lambdaExample" class="btn btn-primary"></Button>-->
+        <!--</Stacklayout>-->
+
 
         <RadListView ref="listView" for="(plant, index) in plantList" @itemTap="onItemTap" class="list-group">
             <ListViewLinearLayout v-tkListViewLayout scrollDirection="vertical"/>
@@ -47,11 +48,6 @@
                         </Label>
                     </StackLayout>
                 </GridLayout>
-
-                <!--<StackLayout orientation="vertical">-->
-                <!--<Label :text="plant.name"></Label>-->
-                <!--<Image :src="plant.picture" class="list-picture"/>--
-            <!--</StackLayout>-->
             </v-template>
 
         </RadListView>
@@ -1093,6 +1089,12 @@
                 this.$emit("select", e.item);
                 this.$navigateTo(PlantDetails, {props: {plant: e.item}});
             },
+            lambdaExample() {
+                axios.get('https://01b33zw9g9.execute-api.us-east-1.amazonaws.com/dev/mea-kanu').then(response => {
+                    console.log(response);
+                    console.log(response.data);
+                });
+            },
             openCam() {
                 this.isBusy = true;
                 camera.requestPermissions();
@@ -1118,7 +1120,7 @@
                         // console.log("Here I am");
                         axios({
                             method: "post",
-                            url: "http://72.130.247.31:8080",
+                            url: "http://168.105.244.121:8081",
                             data: {ImageContent: this.pictureBase64String.toString()},
                             headers: {"Content-Type": "application/json"}
                         }).then(response => {
@@ -1126,6 +1128,7 @@
                             this.percentages = result.Percents;
                             let plants = [];
                             console.log("a");
+                            console.log(result);
                             console.log(result.PNO);
                             console.log(result.PNO[0]);
                             console.log(result.PNO[1]);

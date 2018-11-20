@@ -34,7 +34,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         #confirm successful request
         self.send_response(200)
         self.end_headers()
-        
+
         #determine what type of encoding the file is in by calling
         print(type(body))
         #decode the file and download into pwd
@@ -65,10 +65,10 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         modelp.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         ##### IMPORTANT: OUTPUT ALL ##########
         outputp = modelp.predict(img_datap)
-        for i in range(0,100): 
+        for i in range(0,100):
             sumplant.append(sum(outputp[:,i]))
         else:
-            for i in range(0,100): 
+            for i in range(0,100):
                 sumplant.append(0)
         ###########################################################################
                 numbTILES = 1
@@ -94,12 +94,12 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             "PNO": Z,
             "Percents" : percentages
         }
-        
+
         json_string = json.dumps(data)
         print(json_string)
         self.wfile.write(json_string.encode('utf-8'))
-        
-        
+
+
         #self.send_response(200, "Success")
         #self.end_headers()
 
